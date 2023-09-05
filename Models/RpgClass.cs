@@ -1,4 +1,4 @@
-namespace rpg_dotnet..vscode.Models
+namespace rpg_dotnet.vscode.Models
 {
     public enum RpgClass
     {

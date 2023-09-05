@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.SignalR;
 
-namespace rpg_dotnet..vscode.Models
+namespace rpg_dotnet.vscode.Models
 {
     public class Character
     {
@@ -13,7 +14,7 @@ namespace rpg_dotnet..vscode.Models
         public int Strength { get; set; } = 20;
         public int Defence { get; set; } = 20;
         public int Intelligence { get; set; } = 30;
-        public RpgClass class { get; set; } = RpgClass.Knight;
+        public RpgClass Class { get; set; } =  RpgClass.Knight;
 
     }
 }
