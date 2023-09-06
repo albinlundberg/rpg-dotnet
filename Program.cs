@@ -1,5 +1,6 @@
 global using rpg_dotnet.vscode.Models;
 global using rpg_dotnet.Services.CharacterService;
+global using rpg_dotnet.DTOs.Character;
 
 var builder = WebApplication.CreateBuilder(args);
 
