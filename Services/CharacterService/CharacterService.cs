@@ -58,6 +58,7 @@ namespace rpg_dotnet.Services.CharacterService
                 if(character is null)
                     throw new Exception($"Character with Id '{editedCharacter.Id}' not found");
 
+                //_mapper.Map(editedCharacter, character);
 
                 character.Name = editedCharacter.Name;
                 character.HP = editedCharacter.HP;
