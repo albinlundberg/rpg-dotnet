@@ -2,6 +2,7 @@ global using AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http.HttpResults;
 using rpg_dotnet.Models;
@@ -44,6 +45,35 @@ namespace rpg_dotnet.Services.CharacterService
             var serviceResponse = new ServiceResponse<GetCharacterDTO>();
             var character= characters.FirstOrDefault(c => c.Id == id);
             serviceResponse.Data = _mapper.Map<GetCharacterDTO>(character);
+            return serviceResponse;
+            
+        }
+
+        public async Task<ServiceResponse<GetCharacterDTO>> EditCharacter(EditCharacterDTO editedCharacter)
+        {
+            var serviceResponse = new ServiceResponse<GetCharacterDTO>();
+            try
+            {
+                var character= characters.FirstOrDefault(c => c.Id == editedCharacter.Id);
+                if(character is null)
+                    throw new Exception($"Character with Id '{editedCharacter.Id}' not found");
+
+
+                character.Name = editedCharacter.Name;
+                character.HP = editedCharacter.HP;
+                character.Strength = editedCharacter.Strength;
+                character.Defence = editedCharacter.Defence;
+                character.Intelligence = editedCharacter.Intelligence;
+                character.Class = editedCharacter.Class;
+
+                serviceResponse.Data = _mapper.Map<GetCharacterDTO>(character);
+            } 
+            catch (Exception ex) 
+            {
+                serviceResponse.Success = false;
+                serviceResponse.Message = ex.Message;
+                
+            }
             return serviceResponse;
             
         }
